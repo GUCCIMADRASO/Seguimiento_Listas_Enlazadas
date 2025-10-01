@@ -32,6 +32,18 @@ public class BiCola<E> {
         tam++;
     }
 
+    // Insertar por el final
+    public void insertarFinal(E dato) {
+        NodoBiCola<E> nuevo = new NodoBiCola<>(dato);
+        if (estaVacia()) {
+            frente = fin = nuevo;
+        } else {
+            nuevo.setAnterior(fin);
+            fin.setSiguiente(nuevo.getSiguiente());
+            fin = nuevo;
+        }
+        tam++;
+    }
 
     // Eliminar del frente
     public E eliminarFrente() {
