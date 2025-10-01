@@ -85,7 +85,7 @@ public class ListaDobleCircular<E> implements Iterable<E> {
 
         do {
             if (((Comparable<E>) dato).compareTo(actual.getDato()) < 0) {
-                // insertar antes de actual
+
                 NodoDobleCircular<E> anterior = actual.getAnterior();
 
                 nuevo.setSiguiente(actual);
@@ -95,7 +95,7 @@ public class ListaDobleCircular<E> implements Iterable<E> {
                 actual.setAnterior(nuevo);
 
                 if (actual == primero) {
-                    primero = nuevo; // actualizar referencia si es el nuevo más pequeño
+                    primero = nuevo;
                 }
                 tam++;
                 return;
