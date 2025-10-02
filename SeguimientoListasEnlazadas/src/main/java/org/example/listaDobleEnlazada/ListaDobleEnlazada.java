@@ -16,15 +16,21 @@ public class ListaDobleEnlazada<E extends Comparable<E>> implements Iterable<E> 
     public void agregarPrimero(E dato){
         NodoDoble<E> newNodo = new NodoDoble<>(dato);
 
-        if(this.primero == null){
-            this.primero = newNodo;
-            this.ultimo = newNodo;
+        if (primero == null) {
+            primero = newNodo;
+            ultimo = newNodo;
+            newNodo.setSiguiente(newNodo);
+            newNodo.setAnterior(newNodo);
         } else {
-            newNodo.setSiguiente(this.primero);
-            this.primero.setAnterior(newNodo);
-            this.primero = newNodo;
+            newNodo.setSiguiente(primero);
+            newNodo.setAnterior(ultimo);
+
+            primero.setAnterior(newNodo);
+            ultimo.setSiguiente(newNodo);
+
+            primero = newNodo;
         }
-        this.tam++;
+        tam++;
     }
 
     public void agregarUltimo(E dato){
