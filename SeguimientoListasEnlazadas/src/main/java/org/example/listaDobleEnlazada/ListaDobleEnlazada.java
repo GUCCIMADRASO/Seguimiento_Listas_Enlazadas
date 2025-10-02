@@ -2,7 +2,7 @@ package org.example.listaDobleEnlazada;
 
 import java.util.Iterator;
 
-public class ListaDobleEnlazada<E> implements Iterable<E> {
+public class ListaDobleEnlazada<E extends Comparable<E>> implements Iterable<E> {
     private NodoDoble<E> primero;
     private NodoDoble<E> ultimo;
     private int tam;
@@ -68,14 +68,57 @@ public class ListaDobleEnlazada<E> implements Iterable<E> {
             this.tam++;
         }
     }
+    public void agregarOrdenado(E dato){
+        NodoDoble<E> newNodo = new NodoDoble<>(dato);
 
-    public void mostrar() {
+        if (primero == null) {
+            primero = newNodo;
+            primero.setSiguiente(primero);
+            primero.setAnterior(primero);
+            tam++;
+            return;
+        }
+
         NodoDoble<E> actual = primero;
-        while (actual != null) {
-            System.out.print(actual.getDato() + " ");
+
+        if (dato.compareTo(primero.getDato()) < 0) {
+            NodoDoble<E> ultimo = primero.getAnterior();
+
+            newNodo.setSiguiente(primero);
+            newNodo.setAnterior(ultimo);
+            primero.setAnterior(newNodo);
+            ultimo.setSiguiente(newNodo);
+            primero = newNodo;
+            tam++;
+            return;
+        }
+
+        while (actual.getSiguiente() != primero &&
+                dato.compareTo(actual.getSiguiente().getDato()) > 0) {
             actual = actual.getSiguiente();
         }
+
+        NodoDoble<E> siguiente = actual.getSiguiente();
+        newNodo.setSiguiente(siguiente);
+        newNodo.setAnterior(actual);
+        actual.setSiguiente(newNodo);
+        siguiente.setAnterior(newNodo);
+
+        tam++;
+    }
+
+    public void mostrar() {
+        if (primero == null) {
+            System.out.println("Lista vacía");
+            return;
+        }
+        NodoDoble<E> actual = primero;
+        do {
+            System.out.print(actual.getDato() + " ");
+            actual = actual.getSiguiente();
+        } while (actual != primero);
         System.out.println();
+
     }
 
     @Override

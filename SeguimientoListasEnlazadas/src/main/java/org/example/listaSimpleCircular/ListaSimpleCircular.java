@@ -2,7 +2,7 @@ package org.example.listaSimpleCircular;
 
 import java.util.Iterator;
 
-public class ListaSimpleCircular<E> implements Iterable<E> {
+public class ListaSimpleCircular<E extends Comparable<E>> implements Iterable<E> {
     private NodoSimpleCircular<E> primero;
     private NodoSimpleCircular<E> ultimo;
     private int tam;
@@ -13,7 +13,6 @@ public class ListaSimpleCircular<E> implements Iterable<E> {
         this.tam = 0;
     }
 
-    // 🔹 Agregar al inicio
     public void agregarPrimero(E dato) {
         NodoSimpleCircular<E> newNodo = new NodoSimpleCircular<>(dato);
 
@@ -29,7 +28,6 @@ public class ListaSimpleCircular<E> implements Iterable<E> {
         tam++;
     }
 
-    // 🔹 Agregar al final
     public void agregarUltimo(E dato) {
         NodoSimpleCircular<E> newNodo = new NodoSimpleCircular<>(dato);
 
@@ -45,7 +43,39 @@ public class ListaSimpleCircular<E> implements Iterable<E> {
         tam++;
     }
 
-    // 🔹 Mostrar lista
+    public void agregarOrdenado(E dato) {
+        NodoSimpleCircular<E> newNodo = new NodoSimpleCircular<>(dato);
+        if (primero == null) {
+            primero = newNodo;
+            primero.setSiguiente(primero);
+            tam++;
+            return;
+        }
+        NodoSimpleCircular<E> actual = primero;
+        NodoSimpleCircular<E> ultimo = primero;
+
+        while (ultimo.getSiguiente() != primero) {
+            ultimo = ultimo.getSiguiente();
+        }
+        if (dato.compareTo(primero.getDato()) < 0) {
+            newNodo.setSiguiente(primero);
+            ultimo.setSiguiente(newNodo);
+            primero = newNodo;
+            tam++;
+            return;
+        }
+
+        while (actual.getSiguiente() != primero &&
+                dato.compareTo(actual.getSiguiente().getDato()) > 0) {
+            actual = actual.getSiguiente();
+        }
+
+        newNodo.setSiguiente(actual.getSiguiente());
+        actual.setSiguiente(newNodo);
+        tam++;
+
+    }
+
     public void mostrar() {
         if (primero == null) {
             System.out.println("Lista vacía");
@@ -63,7 +93,6 @@ public class ListaSimpleCircular<E> implements Iterable<E> {
         System.out.println(mensaje + "}");
     }
 
-    // 🔹 Saber si está vacía
     public boolean esVacia() {
         return primero == null;
     }
