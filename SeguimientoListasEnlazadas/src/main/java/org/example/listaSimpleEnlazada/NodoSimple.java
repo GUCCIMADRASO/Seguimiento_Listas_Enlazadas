@@ -1,10 +1,10 @@
-package org.example.listaSimplementeEnlazada;
+package org.example.listaSimpleEnlazada;
 
-public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
+public class NodoSimple<E> implements Comparable<NodoSimple<E>> {
     private E dato;
-    private NodoGenerico<E> siguiente;
+    private NodoSimple<E> siguiente;
 
-    public NodoGenerico(E dato) {
+    public NodoSimple(E dato) {
         this.dato = dato;
         this.siguiente = null;
     }
@@ -17,11 +17,11 @@ public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
         this.dato = dato;
     }
 
-    public NodoGenerico<E> getSiguiente() {
+    public NodoSimple<E> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoGenerico<E> siguiente) {
+    public void setSiguiente(NodoSimple<E> siguiente) {
         this.siguiente = siguiente;
     }
 
@@ -34,7 +34,7 @@ public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
     }
 
     @Override
-    public int compareTo(NodoGenerico<E> otro) {
+    public int compareTo(NodoSimple<E> otro) {
         return ((Comparable<E>) this.dato).compareTo(otro.dato);
     }
 

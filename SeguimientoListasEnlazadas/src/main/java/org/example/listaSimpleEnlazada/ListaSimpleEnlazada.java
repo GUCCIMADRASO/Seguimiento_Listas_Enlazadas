@@ -1,25 +1,25 @@
-package org.example.listaSimplementeEnlazada;
+package org.example.listaSimpleEnlazada;
 
 import java.util.Iterator;
 
-public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
-    private NodoGenerico<E> primero;
+public class ListaSimpleEnlazada<E> implements Iterable<E>{
+    private NodoSimple<E> primero;
     private int tam;
 
-    public ListaGenericaSimpleEnlazada(){
+    public ListaSimpleEnlazada(){
         this.primero = null;
         this.tam = 0;
     }
 
     public void agregarOrdenado(E dato) {
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimple<E> newNodo = new NodoSimple<>(dato);
 
         if (primero == null || ((Comparable<E>)dato).compareTo(primero.getDato()) < 0) {
             agregarPrimero(dato);
             return;
         }
 
-        NodoGenerico<E> actual = primero;
+        NodoSimple<E> actual = primero;
         while (actual.getSiguiente() != null &&
                 ((Comparable<E>)dato).compareTo(actual.getSiguiente().getDato()) > 0) {
             actual = actual.getSiguiente();
@@ -32,7 +32,7 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
 
 
     public void agregarPrimero(E dato){
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimple<E> newNodo = new NodoSimple<>(dato);
 
         if(this.primero == null){
             this.primero = newNodo;
@@ -46,14 +46,14 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
     }
 
     public void agregarUltimo(E dato){
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimple<E> newNodo = new NodoSimple<>(dato);
 
         if(this.primero == null){
             this.primero = newNodo;
             this.tam++;
         }
         else{
-            NodoGenerico<E> actual = this.primero;
+            NodoSimple<E> actual = this.primero;
 
             while(actual.getSiguiente() != null){
                 actual = actual.getSiguiente();
@@ -70,13 +70,13 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
             return;
         }
 
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimple<E> newNodo = new NodoSimple<>(dato);
 
         if(posicion == 0){
             agregarPrimero(dato);
         }
         else{
-            NodoGenerico<E> actual = this.primero;
+            NodoSimple<E> actual = this.primero;
             int contador = 0;
 
             while(contador < posicion - 1){
@@ -91,7 +91,7 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
     }
 
     public void mostrar(){
-        NodoGenerico<E> actual = this.primero;
+        NodoSimple<E> actual = this.primero;
         String mensaje = "{ ";
 
         while(actual != null){
@@ -103,7 +103,7 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
     }
 
     public void listaVacia(){
-        NodoGenerico<E> newNodo = new NodoGenerico<>(null);
+        NodoSimple<E> newNodo = new NodoSimple<>(null);
     }
 
     public boolean esVacia(){
@@ -116,7 +116,7 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
     }
 
     public int localizar(E dato){
-        NodoGenerico<E> actual = this.primero;
+        NodoSimple<E> actual = this.primero;
         int posicion = 0;
 
         while(actual != null){
@@ -142,8 +142,8 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
             return;
         }
 
-        NodoGenerico<E> actual = this.primero;
-        NodoGenerico<E> anterior = null;
+        NodoSimple<E> actual = this.primero;
+        NodoSimple<E> anterior = null;
 
         while(actual != null && !actual.getDato().equals(dato)){
             anterior = actual;
@@ -162,7 +162,7 @@ public class ListaGenericaSimpleEnlazada<E> implements Iterable<E>{
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private NodoGenerico<E> actual = primero;
+            private NodoSimple<E> actual = primero;
 
             @Override
             public boolean hasNext() {

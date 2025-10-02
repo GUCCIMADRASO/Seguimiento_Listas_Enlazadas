@@ -1,11 +1,10 @@
-package org.example.Pila;
+package org.example.cola;
 
-
-public class NodoPila<E> {
+public class NodoCola<E> {
     private E dato;
-    private NodoPila<E> siguiente;
+    private NodoCola<E> siguiente;
 
-    public NodoPila(E dato) {
+    public NodoCola(E dato) {
         this.dato = dato;
         this.siguiente = null;
     }
@@ -18,18 +17,19 @@ public class NodoPila<E> {
         this.dato = dato;
     }
 
-    public NodoPila<E> getSiguiente() {
+    public NodoCola<E> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoPila<E> siguiente) {
+    public void setSiguiente(NodoCola<E> siguiente) {
         this.siguiente = siguiente;
     }
 
     @Override
     public String toString() {
-        return "NodoPila{" +
+        return "NodoCola{" +
                 "dato=" + dato +
+                ", siguiente=" + (siguiente != null ? "existe" : "null") +
                 '}';
     }
 }

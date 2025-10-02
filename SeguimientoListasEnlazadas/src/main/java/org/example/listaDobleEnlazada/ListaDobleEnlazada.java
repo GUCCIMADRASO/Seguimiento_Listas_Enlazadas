@@ -1,18 +1,20 @@
-package org.example.listaDoblementeEnlazada;
+package org.example.listaDobleEnlazada;
 
-public class ListaGenericaDobleEnlazada<E> {
-    private NodoGenericoDoble<E> primero;
-    private NodoGenericoDoble<E> ultimo;
+import java.util.Iterator;
+
+public class ListaDobleEnlazada<E> implements Iterable<E> {
+    private NodoDoble<E> primero;
+    private NodoDoble<E> ultimo;
     private int tam;
 
-    public ListaGenericaDobleEnlazada(){
+    public ListaDobleEnlazada(){
         this.primero = null;
         this.ultimo = null;
         this.tam = 0;
     }
 
     public void agregarPrimero(E dato){
-        NodoGenericoDoble<E> newNodo = new NodoGenericoDoble<>(dato);
+        NodoDoble<E> newNodo = new NodoDoble<>(dato);
 
         if(this.primero == null){
             this.primero = newNodo;
@@ -26,7 +28,7 @@ public class ListaGenericaDobleEnlazada<E> {
     }
 
     public void agregarUltimo(E dato){
-        NodoGenericoDoble<E> newNodo = new NodoGenericoDoble<>(dato);
+        NodoDoble<E> newNodo = new NodoDoble<>(dato);
 
         if(this.ultimo == null){
             this.primero = newNodo;
@@ -50,15 +52,15 @@ public class ListaGenericaDobleEnlazada<E> {
         } else if(posicion == this.tam){
             agregarUltimo(dato);
         } else {
-            NodoGenericoDoble<E> actual = this.primero;
+            NodoDoble<E> actual = this.primero;
             int contador = 0;
 
             while(contador < posicion){
                 actual = actual.getSiguiente();
                 contador++;
             }
-            NodoGenericoDoble<E> anterior = actual.getAnterior();
-            NodoGenericoDoble<E> newNodo = new NodoGenericoDoble<>(dato);
+            NodoDoble<E> anterior = actual.getAnterior();
+            NodoDoble<E> newNodo = new NodoDoble<>(dato);
 
             newNodo.setAnterior(anterior);
             newNodo.setSiguiente(actual);
@@ -68,11 +70,30 @@ public class ListaGenericaDobleEnlazada<E> {
     }
 
     public void mostrar() {
-        NodoGenericoDoble<E> actual = primero;
+        NodoDoble<E> actual = primero;
         while (actual != null) {
             System.out.print(actual.getDato() + " ");
             actual = actual.getSiguiente();
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<>() {
+            private NodoDoble<E> actual = primero;
+
+            @Override
+            public boolean hasNext() {
+                return actual != null;
+            }
+
+            @Override
+            public E next() {
+                E dato = actual.getDato();
+                actual = actual.getSiguiente();
+                return dato;
+            }
+        };
     }
 }

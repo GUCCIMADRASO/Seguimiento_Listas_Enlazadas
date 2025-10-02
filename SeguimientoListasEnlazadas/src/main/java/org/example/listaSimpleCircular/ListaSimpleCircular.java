@@ -1,13 +1,13 @@
-package org.example.listaSimplementeCircular;
+package org.example.listaSimpleCircular;
 
 import java.util.Iterator;
 
-public class ListaGenericaSimpleCircular<E> implements Iterable<E> {
-    private NodoGenerico<E> primero;
-    private NodoGenerico<E> ultimo;
+public class ListaSimpleCircular<E> implements Iterable<E> {
+    private NodoSimpleCircular<E> primero;
+    private NodoSimpleCircular<E> ultimo;
     private int tam;
 
-    public ListaGenericaSimpleCircular() {
+    public ListaSimpleCircular() {
         this.primero = null;
         this.ultimo = null;
         this.tam = 0;
@@ -15,7 +15,7 @@ public class ListaGenericaSimpleCircular<E> implements Iterable<E> {
 
     // 🔹 Agregar al inicio
     public void agregarPrimero(E dato) {
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimpleCircular<E> newNodo = new NodoSimpleCircular<>(dato);
 
         if (primero == null) {
             primero = newNodo;
@@ -31,7 +31,7 @@ public class ListaGenericaSimpleCircular<E> implements Iterable<E> {
 
     // 🔹 Agregar al final
     public void agregarUltimo(E dato) {
-        NodoGenerico<E> newNodo = new NodoGenerico<>(dato);
+        NodoSimpleCircular<E> newNodo = new NodoSimpleCircular<>(dato);
 
         if (primero == null) {
             primero = newNodo;
@@ -52,7 +52,7 @@ public class ListaGenericaSimpleCircular<E> implements Iterable<E> {
             return;
         }
 
-        NodoGenerico<E> actual = primero;
+        NodoSimpleCircular<E> actual = primero;
         String mensaje = "{ ";
 
         do {
@@ -75,7 +75,7 @@ public class ListaGenericaSimpleCircular<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private NodoGenerico<E> actual = primero;
+            private NodoSimpleCircular<E> actual = primero;
             private boolean inicio = true;
 
             @Override

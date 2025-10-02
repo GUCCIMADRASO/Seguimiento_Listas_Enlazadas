@@ -1,8 +1,8 @@
 package org.example.cola;
 
 public class Cola<E> {
-    private Nodocola<E> frente;
-    private Nodocola<E> fin;
+    private NodoCola<E> frente;
+    private NodoCola<E> fin;
     private int tam;
 
     public Cola() {
@@ -11,19 +11,19 @@ public class Cola<E> {
         tam = 0;
     }
 
-    public Nodocola<E> getFrente() {
+    public NodoCola<E> getFrente() {
         return frente;
     }
 
-    public void setFrente(Nodocola<E> frente) {
+    public void setFrente(NodoCola<E> frente) {
         this.frente = frente;
     }
 
-    public Nodocola<E> getFin() {
+    public NodoCola<E> getFin() {
         return fin;
     }
 
-    public void setFin(Nodocola<E> fin) {
+    public void setFin(NodoCola<E> fin) {
         this.fin = fin;
     }
 
@@ -36,7 +36,7 @@ public class Cola<E> {
     }
 
     public void encolar(E dato) {
-        Nodocola<E> nuevo = new Nodocola<>(dato);
+        NodoCola<E> nuevo = new NodoCola<>(dato);
         if (estaVacia()) {
             frente = fin = nuevo;
         } else {
@@ -72,7 +72,7 @@ public class Cola<E> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Cola: [");
-        Nodocola<E> actual = frente;
+        NodoCola<E> actual = frente;
         while (actual != null) {
             sb.append(actual.getDato());
             if (actual.getSiguiente() != null) sb.append(" <- ");

@@ -1,10 +1,10 @@
-package org.example.listaSimplementeCircular;
+package org.example.listaSimpleCircular;
 
-public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
+public class NodoSimpleCircular<E> implements Comparable<NodoSimpleCircular<E>> {
     private E dato;
-    private NodoGenerico<E> siguiente;
+    private NodoSimpleCircular<E> siguiente;
 
-    public NodoGenerico(E dato) {
+    public NodoSimpleCircular(E dato) {
         this.dato = dato;
         this.siguiente = null;
     }
@@ -17,11 +17,11 @@ public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
         this.dato = dato;
     }
 
-    public NodoGenerico<E> getSiguiente() {
+    public NodoSimpleCircular<E> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoGenerico<E> siguiente) {
+    public void setSiguiente(NodoSimpleCircular<E> siguiente) {
         this.siguiente = siguiente;
     }
 
@@ -34,7 +34,7 @@ public class NodoGenerico<E> implements Comparable<NodoGenerico<E>> {
     }
 
     @Override
-    public int compareTo(NodoGenerico<E> otro) {
+    public int compareTo(NodoSimpleCircular<E> otro) {
         return ((Comparable<E>) this.dato).compareTo(otro.dato);
     }
 

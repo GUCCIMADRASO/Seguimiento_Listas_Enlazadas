@@ -1,11 +1,11 @@
 package org.example;
 
-import org.example.listaSimplementeCircular.ListaGenericaSimpleCircular;
-import org.example.listaDoblementeEnlazada.ListaGenericaDobleEnlazada;
+import org.example.listaSimpleCircular.ListaSimpleCircular;
+import org.example.listaDobleEnlazada.ListaDobleEnlazada;
 
 public class Main {
     public static void main(String[] args) {
-        ListaGenericaSimpleCircular<Integer> lista = new ListaGenericaSimpleCircular<>();
+        ListaSimpleCircular<Integer> lista = new ListaSimpleCircular<>();
 
         lista.agregarPrimero(3);
         lista.agregarPrimero(2);
@@ -14,7 +14,7 @@ public class Main {
 
         lista.mostrar();
 
-        ListaGenericaDobleEnlazada<Integer> listaDoble = new ListaGenericaDobleEnlazada<>();
+        ListaDobleEnlazada<Integer> listaDoble = new ListaDobleEnlazada<>();
         listaDoble.agregarPrimero(3);
         listaDoble.agregarPrimero(2);
         listaDoble.agregarPrimero(1);

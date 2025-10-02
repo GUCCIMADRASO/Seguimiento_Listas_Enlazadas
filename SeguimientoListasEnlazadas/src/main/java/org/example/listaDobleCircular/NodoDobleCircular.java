@@ -1,5 +1,5 @@
-package org.example.listaDoblementeCircular;
-public class NodoDobleCircular<E> {
+package org.example.listaDobleCircular;
+public class NodoDobleCircular<E> implements Comparable<NodoDobleCircular<E>> {
     private E dato;
     private NodoDobleCircular<E> siguiente;
     private NodoDobleCircular<E> anterior;
@@ -32,6 +32,11 @@ public class NodoDobleCircular<E> {
 
     public void setAnterior(NodoDobleCircular<E> anterior) {
         this.anterior = anterior;
+    }
+
+    @Override
+    public int compareTo(NodoDobleCircular<E> otro) {
+        return ((Comparable<E>) this.dato).compareTo(otro.dato);
     }
 
     @Override

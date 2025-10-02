@@ -1,10 +1,9 @@
-package org.example.BiCola;
+package org.example.biCola;
 
-import org.example.cola.Nodocola;
 
 public class NodoBiCola <E>{
     private NodoBiCola<E> anterior;
-    private Nodocola<E> siguiente;
+    private NodoBiCola<E> siguiente;
     private E dato;
 
     public NodoBiCola(E dato) {
@@ -21,11 +20,11 @@ public class NodoBiCola <E>{
         this.anterior = anterior;
     }
 
-    public Nodocola<E> getSiguiente() {
+    public NodoBiCola<E> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodocola<E> siguiente) {
+    public void setSiguiente(NodoBiCola<E> siguiente) {
         this.siguiente = siguiente;
     }
 

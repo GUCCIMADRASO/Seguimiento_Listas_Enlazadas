@@ -1,4 +1,4 @@
-package org.example.listaDoblementeCircular;
+package org.example.listaDobleCircular;
 
 import java.util.Iterator;
 

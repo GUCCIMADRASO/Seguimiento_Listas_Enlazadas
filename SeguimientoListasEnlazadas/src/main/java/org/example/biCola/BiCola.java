@@ -1,4 +1,4 @@
-package org.example.BiCola;
+package org.example.biCola;
 
 public class BiCola<E> {
     private NodoBiCola<E> frente;
